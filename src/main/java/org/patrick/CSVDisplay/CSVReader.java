@@ -28,21 +28,21 @@ public class CSVReader {
      * @return the .csv file parsed into a List of CSVItems
      * @throws IOException if the path or file is wrong
      */
-    public static List<CSVItem> csvToList(String csvFilePath, char seperator) throws IOException {
+	public static List<CSVItem> csvToList(String csvFilePath, char seperator) throws IOException {
     	try (
     			Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
     	) {
-    		CsvToBean<CSVItem> csvToBean = new CsvToBeanBuilder<CSVItem>(reader)
-                    .withType(CSVItem.class)
+    			CsvToBean<CSVItem> csvToBean = new CsvToBeanBuilder<CSVItem>(reader)
+    				.withType(CSVItem.class)
                     .withSeparator(seperator)
                     .build();
     		
     		Iterator<CSVItem> csvItemIterator = csvToBean.iterator();
-            List<CSVItem> ItemList = new ArrayList<CSVItem>();
+    		List<CSVItem> ItemList = new ArrayList<CSVItem>();
             
-            while (csvItemIterator.hasNext()) {
-                CSVItem item = csvItemIterator.next();
-                ItemList.add(item);
+    		while (csvItemIterator.hasNext()) {
+    			CSVItem item = csvItemIterator.next();
+    			ItemList.add(item);
             }
             
             return ItemList;
@@ -51,14 +51,13 @@ public class CSVReader {
     }
     
     /**
-     * If no seperator is given, assumes that ',' is the standart seperator
-     * Parses a .csv file into a List of CSVItems
+     * Parses a .csv file with standart seperator ',' into a List of CSVItems 
      * 
      * @param csvFilePath the path to the .csv file
      * @return the .csv file parsed into a List of CSVItems
      * @throws IOException if the path or file is wrong
      */
-    public static List<CSVItem> csvToList(String csvFilePath) throws IOException {
+	public static List<CSVItem> csvToList(String csvFilePath) throws IOException {
     	return csvToList(csvFilePath, ',');
     }
     
