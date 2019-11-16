@@ -2,6 +2,12 @@ package org.patrick.CSVDisplay;
 
 import com.opencsv.bean.CsvBindByName;
 
+/**
+ * Holds information about an item
+ * 
+ * @author Patrick Heinrich
+ *
+ */
 public class CSVItem {
     
     @CsvBindByName(column = "Hauptartikelnr")
@@ -178,9 +184,6 @@ public class CSVItem {
 
     public void setImageFileName(String imageFileName) {
         this.imageFileName = imageFileName;
-    }
-    
-    
-    
+    }   
     
 }
