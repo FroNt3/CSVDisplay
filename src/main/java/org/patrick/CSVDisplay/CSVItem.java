@@ -1,5 +1,9 @@
 package org.patrick.CSVDisplay;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.opencsv.bean.CsvBindByName;
 
 /**
@@ -185,5 +189,15 @@ public class CSVItem {
     public void setImageFileName(String imageFileName) {
         this.imageFileName = imageFileName;
     }   
+    
+    public List<String> toList() throws IllegalArgumentException, IllegalAccessException {
+        List<String> tmpList = new ArrayList<String>();
+        
+        for (Field field : CSVItem.class.getDeclaredFields()) {
+            tmpList.add((String) field.get(this));
+        }  
+        
+        return tmpList;
+    }
     
 }
