@@ -3,7 +3,7 @@ package org.patrick.CSVDisplay;
 import com.opencsv.bean.CsvBindByName;
 
 /**
- * Holds information about an item
+ * Objects hold information about an item
  * 
  * @author Patrick Heinrich
  *
