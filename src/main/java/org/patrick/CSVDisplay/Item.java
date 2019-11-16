@@ -52,7 +52,135 @@ public class Item {
 	@CsvBindByName(column = "Bildname")
 	private String imageFileName = "";
 
+	public String getId() {
+		return id;
+	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getManufacturer() {
+		return manufacturer;
+	}
+
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getMaterials() {
+		return materials;
+	}
+
+	public void setMaterials(String materials) {
+		this.materials = materials;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getSleeve() {
+		return sleeve;
+	}
+
+	public void setSleeve(String sleeve) {
+		this.sleeve = sleeve;
+	}
+
+	public String getLeg() {
+		return leg;
+	}
+
+	public void setLeg(String leg) {
+		this.leg = leg;
+	}
+
+	public String getCollar() {
+		return collar;
+	}
+
+	public void setCollar(String collar) {
+		this.collar = collar;
+	}
+
+	public String getManufacturing() {
+		return manufacturing;
+	}
+
+	public void setManufacturing(String manufacturing) {
+		this.manufacturing = manufacturing;
+	}
+
+	public String getPocketType() {		
+		return pocketType;
+	}
+
+	public void setPocketType(String pocketType) {
+		this.pocketType = pocketType;
+	}
+
+	public String getGrammage() {
+		return grammage;
+	}
+
+	public void setGrammage(String grammage) {
+		this.grammage = grammage;
+	}
+
+	public String getMaterial() {
+		return material;
+	}
+
+	public void setMaterial(String material) {
+		this.material = material;
+	}
+
+	public String getOriginCountry() {
+		return originCountry;
+	}
+
+	public void setOriginCountry(String originCountry) {
+		this.originCountry = originCountry;
+	}
+
+	public String getImageFileName() {
+		return imageFileName;
+	}
+
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
+	}
+	
+	
 	
 	
 }
