@@ -21,12 +21,12 @@ public class CSVReaderTest {
     
     @Test
     public void testListSize() throws IOException {
-        assertEquals(itemList.size(), 10);
+        assertEquals(10, itemList.size());
     }
     
     @Test
     public void testDismissHeader() throws IOException {
-        assertNotEquals(itemList.get(0).getId(), "Hauptartikelnr");
+        assertNotEquals("Hauptartikelnr", itemList.get(0).getId());
     }
 
 }
