@@ -5,30 +5,57 @@ import java.util.List;
 
 public class ChartItem {
     
-    public static List<ArrayList<Object>> getTypeCount(List<CSVItem> itemList) {
-        List<ArrayList<Object>> listedData = new ArrayList<ArrayList<Object>>();
+    private String type = "";
+    private int absolute = 0;
+    private float percentage = 0f; 
+    
+    public ChartItem(String type) {
+        this.type = type;
+    }
+    
+    public String getType() {
+        return type;
+    }
+
+    public int getAbsolute() {
+        return absolute;
+    }
+
+    public float getPercentage() {
+        return percentage;
+    }
+    
+    private void setPercentage(float percentage) {
+        this.percentage = percentage;
+    }
+    
+    private void increaseAbsolute() {
+        this.absolute += 1;
+    }
+
+    public static List<ChartItem> getTypeCount(List<CSVItem> itemList) {
+        List<ChartItem> listedData = new ArrayList<ChartItem>();
         float itemTotal = itemList.size();
                 
         for (CSVItem csvItem : itemList) {
             boolean duplicate = false;
-            for (ArrayList<Object> tmpList : listedData) {;
-                if (tmpList.get(0).toString().equals(csvItem.getType())) {
+            for (ChartItem tmpChartItem : listedData) {;
+                if (tmpChartItem.getType().equals(csvItem.getType())) {
                     duplicate = true;
-                    tmpList.set(1, (int) tmpList.get(1) + 1);
+                    tmpChartItem.increaseAbsolute();;
                 }
             }
             if (!duplicate) {
-                ArrayList<Object> tmpList = new ArrayList<Object>();
-                tmpList.add(csvItem.getType());
-                tmpList.add(1);
-                listedData.add(tmpList);
+                ChartItem tmpChartItem = new ChartItem(csvItem.getType());
+                tmpChartItem.increaseAbsolute();                
+                listedData.add(tmpChartItem);
             }        
         }        
         
-        for (ArrayList<Object> tmpList : listedData) {    
-            float itemSpecific = (int) tmpList.get(1);
-            float percentage = itemSpecific / itemTotal;
-            tmpList.add(percentage);            
+        for (ChartItem tmpChartItem : listedData) {    
+            float chartItemAbsolute = tmpChartItem.getAbsolute();
+            float percentage = chartItemAbsolute / itemTotal;
+            tmpChartItem.setPercentage(percentage);          
         }
         
         return listedData;
