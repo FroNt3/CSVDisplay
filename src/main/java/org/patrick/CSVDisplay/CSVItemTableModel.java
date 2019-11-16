@@ -1,7 +1,6 @@
 package org.patrick.CSVDisplay;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
@@ -42,25 +41,29 @@ public class CSVItemTableModel extends AbstractTableModel{
     @Override
     public Object getValueAt(int row, int column) {
         CSVItem tmpCSVItem = csvItemList.get(row);
-        List<String> tmpCSVItemList = new ArrayList<String>();
-        try {
-            tmpCSVItemList = tmpCSVItem.toList();
-        } catch (IllegalArgumentException | IllegalAccessException e) {
-            e.printStackTrace();
+        String value = null;
+        int counter = 0;
+        for (Field field : CSVItem.class.getDeclaredFields()) {
+            if (column == counter) {                
+                try {
+                    field.setAccessible(true);
+                    value = (String) field.get(tmpCSVItem);
+                } catch (IllegalArgumentException | IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+            counter++;
         }
-        if (column < tmpCSVItemList.size()) {
-            return tmpCSVItemList.get(column);
-        } else {
-            return null;
-        }        
+        
+        return value;        
     }
     
     @Override
     public void setValueAt(Object value, int row, int column) {
         CSVItem tmpCSVItem = csvItemList.get(row);
-        int i = 0;
+        int counter = 0;
         for (Field field : CSVItem.class.getDeclaredFields()) {
-            if (column == i) {
+            if (column == counter) {
                 try {
                     field.setAccessible(true);
                     field.set(tmpCSVItem, (String) value);
@@ -69,9 +72,8 @@ public class CSVItemTableModel extends AbstractTableModel{
                 }
                 break;
             }
-            i++;
-        }
-        
+            counter++;
+        }        
     }
 
 }
