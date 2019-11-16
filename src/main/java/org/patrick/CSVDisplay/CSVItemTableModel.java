@@ -1,5 +1,6 @@
 package org.patrick.CSVDisplay;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,21 +33,44 @@ public class CSVItemTableModel extends AbstractTableModel{
     public int getColumnCount() {
         return columnNames.length;
     }
+    
+    @Override
+    public boolean isCellEditable(int row, int column) {
+        return true;
+    }
 
     @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        CSVItem tmpCSVItem = csvItemList.get(rowIndex);
+    public Object getValueAt(int row, int column) {
+        CSVItem tmpCSVItem = csvItemList.get(row);
         List<String> tmpCSVItemList = new ArrayList<String>();
         try {
             tmpCSVItemList = tmpCSVItem.toList();
         } catch (IllegalArgumentException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        if (columnIndex < tmpCSVItemList.size()) {
-            return tmpCSVItemList.get(columnIndex);
+        if (column < tmpCSVItemList.size()) {
+            return tmpCSVItemList.get(column);
         } else {
             return null;
-        }       
+        }        
+    }
+    
+    @Override
+    public void setValueAt(Object value, int row, int column) {
+        CSVItem tmpCSVItem = csvItemList.get(row);
+        int i = 0;
+        for (Field field : CSVItem.class.getDeclaredFields()) {
+            if (column == i) {
+                try {
+                    field.setAccessible(true);
+                    field.set(tmpCSVItem, (String) value);
+                } catch (IllegalArgumentException | IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+                break;
+            }
+            i++;
+        }
         
     }
 
