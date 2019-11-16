@@ -19,7 +19,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
  *
  */
 public class CSVReader {
-	
+    
     /**
      * Parses a .csv file into a List of CSVItems
      * 
@@ -28,26 +28,26 @@ public class CSVReader {
      * @return the .csv file parsed into a List of CSVItems
      * @throws IOException if the path or file is wrong
      */
-	public static List<CSVItem> csvToList(String csvFilePath, char seperator) throws IOException {
-    	try (
-    			Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
-    	) {
-    			CsvToBean<CSVItem> csvToBean = new CsvToBeanBuilder<CSVItem>(reader)
-    				.withType(CSVItem.class)
+    public static List<CSVItem> csvToList(String csvFilePath, char seperator) throws IOException {
+        try (
+                Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
+        ) {
+                CsvToBean<CSVItem> csvToBean = new CsvToBeanBuilder<CSVItem>(reader)
+                    .withType(CSVItem.class)
                     .withSeparator(seperator)
                     .build();
-    		
-    		Iterator<CSVItem> csvItemIterator = csvToBean.iterator();
-    		List<CSVItem> ItemList = new ArrayList<CSVItem>();
             
-    		while (csvItemIterator.hasNext()) {
-    			CSVItem item = csvItemIterator.next();
-    			ItemList.add(item);
+            Iterator<CSVItem> csvItemIterator = csvToBean.iterator();
+            List<CSVItem> ItemList = new ArrayList<CSVItem>();
+            
+            while (csvItemIterator.hasNext()) {
+                CSVItem item = csvItemIterator.next();
+                ItemList.add(item);
             }
             
             return ItemList;
-    	}
-    	
+        }
+        
     }
     
     /**
@@ -57,8 +57,8 @@ public class CSVReader {
      * @return the .csv file parsed into a List of CSVItems
      * @throws IOException if the path or file is wrong
      */
-	public static List<CSVItem> csvToList(String csvFilePath) throws IOException {
-    	return csvToList(csvFilePath, ',');
+    public static List<CSVItem> csvToList(String csvFilePath) throws IOException {
+        return csvToList(csvFilePath, ',');
     }
     
 }
