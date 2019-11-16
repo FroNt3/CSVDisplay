@@ -24,17 +24,17 @@ public class CSVReader {
      * Parses a .csv file into a List of CSVItems
      * 
      * @param csvFilePath the path to the .csv file
-     * @param seperator char which seperates the values of the .csv file (generally ',' or ';')
+     * @param seperator char which separator the values of the .csv file (generally ',' or ';')
      * @return the .csv file parsed into a List of CSVItems
      * @throws IOException if the path or file is wrong
      */
-    public static List<CSVItem> csvToList(String csvFilePath, char seperator) throws IOException {
+    public static List<CSVItem> csvToList(String csvFilePath, char separator) throws IOException {
         try (
                 Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
         ) {
-                CsvToBean<CSVItem> csvToBean = new CsvToBeanBuilder<CSVItem>(reader)
+            CsvToBean<CSVItem> csvToBean = new CsvToBeanBuilder<CSVItem>(reader)
                     .withType(CSVItem.class)
-                    .withSeparator(seperator)
+                    .withSeparator(separator)
                     .build();
             
             Iterator<CSVItem> csvItemIterator = csvToBean.iterator();
@@ -46,12 +46,11 @@ public class CSVReader {
             }
             
             return ItemList;
-        }
-        
+        }        
     }
     
     /**
-     * Parses a .csv file with standart seperator ',' into a List of CSVItems 
+     * Parses a .csv file with standard separator ',' into a List of CSVItems 
      * 
      * @param csvFilePath the path to the .csv file
      * @return the .csv file parsed into a List of CSVItems
