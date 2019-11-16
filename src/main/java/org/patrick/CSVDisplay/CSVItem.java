@@ -2,7 +2,7 @@ package org.patrick.CSVDisplay;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class Item {
+public class CSVItem {
 	
 	@CsvBindByName(column = "Hauptartikelnr")
 	private String id = "";

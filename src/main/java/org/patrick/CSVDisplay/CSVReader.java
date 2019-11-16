@@ -13,20 +13,20 @@ import com.opencsv.bean.CsvToBeanBuilder;
 
 public class CSVReader {
 	
-    public static List<Item> csvToList(String csvFilePath) throws IOException {
+    public static List<CSVItem> csvToList(String csvFilePath) throws IOException {
        try (
            Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
        ) {
-           CsvToBean<Item> csvToBean = new CsvToBeanBuilder<Item>(reader)
-                   .withType(Item.class)
+           CsvToBean<CSVItem> csvToBean = new CsvToBeanBuilder<CSVItem>(reader)
+                   .withType(CSVItem.class)
                    .withSeparator(';')
                    .build();
 
-           Iterator<Item> csvItemIterator = csvToBean.iterator();
-           List<Item> ItemList = new ArrayList<Item>();
+           Iterator<CSVItem> csvItemIterator = csvToBean.iterator();
+           List<CSVItem> ItemList = new ArrayList<CSVItem>();
 
            while (csvItemIterator.hasNext()) {
-               Item item = csvItemIterator.next();
+               CSVItem item = csvItemIterator.next();
                ItemList.add(item);
            }
            
