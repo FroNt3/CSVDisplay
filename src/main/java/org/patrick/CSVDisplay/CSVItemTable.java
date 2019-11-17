@@ -8,6 +8,8 @@ import javax.swing.JTable;
 
 public class CSVItemTable extends JFrame {
     
+    private static final long serialVersionUID = 1L;
+
     public CSVItemTable(List<CSVItem> csvItemList) {
         
         CSVItemTableModel model = new CSVItemTableModel(csvItemList);

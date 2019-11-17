@@ -7,6 +7,7 @@ import javax.swing.table.AbstractTableModel;
 
 public class CSVItemTableModel extends AbstractTableModel{
     
+    private static final long serialVersionUID = 1L;
     private final List<CSVItem> csvItemList;
     private final String[] columnNames = new String[] {
             "Hauptartikelnr","Artikelname","Hersteller","Beschreibung","Materialangaben",
