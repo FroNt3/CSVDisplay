@@ -16,7 +16,7 @@ public class ChartItemTest {
     
     @BeforeClass
     public static void loadCSV() throws IOException {        
-        itemList = CSVReader.csvToList(".\\src\\test\\resources\\Artikel_Short.csv", ';');
+        itemList = CSVHandler.csvToList(".\\src\\test\\resources\\Artikel_Short.csv", ';');
         itemTypeList = ChartItem.getTypeCount(itemList);
     }
     

@@ -10,13 +10,13 @@ import java.util.List;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class CSVReaderTest {
+public class CSVHandlerTest {
     
     private static List<CSVItem> itemList = new ArrayList<CSVItem>();
     
     @BeforeClass
     public static void loadCSV() throws IOException {        
-        itemList = CSVReader.csvToList(".\\src\\test\\resources\\Artikel_Short.csv", ';');        
+        itemList = CSVHandler.csvToList(".\\src\\test\\resources\\Artikel_Short.csv", ';');        
     }
     
     @Test
