@@ -59,3 +59,4 @@ GUI erstellen | 120 Minuten
 Schreiben von .csv ermöglichen | 35 Minuten
 Testen der Funktionen und Fehlersuche | 45 Minuten
 Informieren über Markdown und schreiben der README | 110 Minuten
+Kleinere stilistische Fehler im Code aufräumen | 30 Minuten
