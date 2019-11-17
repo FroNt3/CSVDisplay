@@ -15,14 +15,14 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
  * @author Patrick Heinrich
  *
  */
-public class CSVItemTableModel extends AbstractTableModel{
+public class CSVItemTableModel extends AbstractTableModel {
     
     private static final long serialVersionUID = 1L;
     private final List<CSVItem> csvItemList;
     private final String[] columnNames = new String[] {
-            "Hauptartikelnr","Artikelname","Hersteller","Beschreibung","Materialangaben",
-            "Geschlecht","Produktart","Ärmel","Bein","Kragen","Herstellung","Taschenart",
-            "Grammatur","Material","Ursprungsland","Bildname"
+            "Hauptartikelnr", "Artikelname", "Hersteller", "Beschreibung", "Materialangaben",
+            "Geschlecht", "Produktart", "Ärmel", "Bein", "Kragen", "Herstellung", "Taschenart",
+            "Grammatur", "Material", "Ursprungsland", "Bildname"
     };
     
     /**
@@ -106,11 +106,6 @@ public class CSVItemTableModel extends AbstractTableModel{
                     field.setAccessible(true);
                     field.set(tmpCSVItem, (String) value);
                 } catch (IllegalArgumentException | IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    CSVHandler.listToCSV(csvItemList, ".\\src\\main\\resources\\Artikel_created.csv");
-                } catch (CsvDataTypeMismatchException | CsvRequiredFieldEmptyException | IOException e) {
                     e.printStackTrace();
                 }
                 break;

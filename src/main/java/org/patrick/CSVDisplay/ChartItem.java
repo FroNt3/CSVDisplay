@@ -61,10 +61,10 @@ public class ChartItem {
                 
         for (CSVItem csvItem : itemList) {
             boolean duplicate = false;
-            for (ChartItem tmpChartItem : listedData) {;
+            for (ChartItem tmpChartItem : listedData) {
                 if (tmpChartItem.getType().equals(csvItem.getType())) {
                     duplicate = true;
-                    tmpChartItem.increaseAbsolute();;
+                    tmpChartItem.increaseAbsolute();
                 }
             }
             if (!duplicate) {

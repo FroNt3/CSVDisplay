@@ -23,13 +23,13 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
  * @author Patrick Heinrich 
  *
  */
-public class CSVHandler {
+public final class CSVHandler {
     
     /**
      * Parses a .csv file into a List of CSVItems
      * 
      * @param csvFilePath the path to the .csv file
-     * @param seperator char which separator the values of the .csv file (generally ',' or ';')
+     * @param separator char which separator the values of the .csv file (generally ',' or ';')
      * @return the .csv file parsed into a List of CSVItems
      * @throws IOException if the path or file is wrong
      */
@@ -43,14 +43,14 @@ public class CSVHandler {
                     .build();
             
             Iterator<CSVItem> csvItemIterator = csvToBean.iterator();
-            List<CSVItem> ItemList = new ArrayList<CSVItem>();
+            List<CSVItem> itemList = new ArrayList<CSVItem>();
             
             while (csvItemIterator.hasNext()) {
                 CSVItem item = csvItemIterator.next();
-                ItemList.add(item);
+                itemList.add(item);
             }
             
-            return ItemList;
+            return itemList;
         }        
     }
     
@@ -75,7 +75,8 @@ public class CSVHandler {
      * @throws CsvDataTypeMismatchException When the provided value can not be converted to the required type
      * @throws CsvRequiredFieldEmptyException When a field marked as required is empty
      */
-    public static void listToCSV(List<CSVItem> csvItemList, String path) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
+    public static void listToCSV(List<CSVItem> csvItemList, String path) 
+            throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
         try (
                 Writer writer = Files.newBufferedWriter(Paths.get(path));
         ) {
@@ -86,5 +87,8 @@ public class CSVHandler {
             beanToCsv.write(csvItemList);
         }        
     }   
+    
+    private CSVHandler() {        
+    }
     
 }
